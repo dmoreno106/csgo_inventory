@@ -16,4 +16,5 @@
     <string name="tv_weapon">Weapon:</string>
     <string name="tv_name">Name:</string>
     <string name="bt_edit">EDIT</string>
+    <string name="csgo">CSGO INVENTORY</string>
 </resources>
