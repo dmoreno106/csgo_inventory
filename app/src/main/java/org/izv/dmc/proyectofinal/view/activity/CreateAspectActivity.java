@@ -115,7 +115,7 @@ public class CreateAspectActivity extends AppCompatActivity {
                     cleanFields();
                 }
             } else {
-                Toast.makeText(this, "select a weapon", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "this aspect is already saved", Toast.LENGTH_LONG).show();
             }
         });
 
