@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="rarity">
+        <item >Common</item>
+        <item>Uncommon</item>
+        <item>Rare</item>
+        <item>Mythical</item>
+        <item>Legendary</item>
+        <item>Global</item>
+    </array>
+</resources>

@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Proyecto Final</string>
+    <string name="add">add</string>
+    <string name="rarity">Rarity</string>
+    <string name="Name">name</string>
+    <string name="etUrl">Url</string>
+    <string name="default_weapon"><![CDATA[< Select a Weapon >]]></string>
+    <string name="Condition">Condition</string>
+    <string name="iv_aspect">aspect</string>
+    <string name="ivImage">ivImage</string>
+    <string name="bt_add">ADD</string>
+    <string name="bt_cancel">CANCEL</string>
+    <string name="ib_delete">delete</string>
+    <string name="tv_rarity">Rarity:</string>
+    <string name="tv_condition">Condition:</string>
+    <string name="tv_weapon">Weapon:</string>
+    <string name="tv_name">Name:</string>
+    <string name="bt_edit">EDIT</string>
+</resources>
