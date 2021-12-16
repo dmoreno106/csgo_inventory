@@ -1,11 +1,8 @@
 package org.izv.dmc.proyectofinal.view.activity;
 
-import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.util.Log;
 import android.util.Patterns;
-import android.view.View;
 import android.webkit.URLUtil;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -13,13 +10,14 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelStoreOwner;
 
 import com.bumptech.glide.Glide;
+import com.google.android.material.textfield.TextInputEditText;
 
 import org.izv.dmc.proyectofinal.R;
 import org.izv.dmc.proyectofinal.model.entity.Aspect;
@@ -31,7 +29,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public class EditAspect extends AppCompatActivity {
-        private EditText etName, etCondition,etUrl;
+        private TextInputEditText tiName, tiCondition, tiUrl,tiDate;
         private Spinner spWeapon,spRarity;
         private ImageView ivImage;
         private ImageButton ibDelete;
@@ -51,24 +49,51 @@ public class EditAspect extends AppCompatActivity {
 
 
             spWeapon = findViewById(R.id.spWeapon);
-            etName = findViewById(R.id.etName);
+            tiName = findViewById(R.id.tiName);
             spRarity = findViewById(R.id.spRarity);
-            etCondition = findViewById(R.id.etCondition);
-            etUrl = findViewById(R.id.etUrl);
+            tiCondition = findViewById(R.id.tiCondition);
+            tiUrl = findViewById(R.id.tiUrl);
+            tiDate=findViewById(R.id.tiDate);
             ivImage = findViewById(R.id.ivImage);
             ibDelete=findViewById(R.id.ibDelete);
-            etName.setText(aspect.name);
-            etCondition.setText(aspect.condition);
 
-            etUrl.setText(aspect.url);
+            tiName.setText(aspect.name);
+            tiCondition.setText(aspect.condition);
+            tiUrl.setText(aspect.url);
+            tiDate.setText(aspect.fecha);
+
+            tiDate.setOnClickListener(view -> {
+                DatePickerFragment newFragment = new DatePickerFragment(tiDate);
+                newFragment.show(getSupportFragmentManager(), "datepicker");
+            });
             putRarity();
             //si la url existe la colocamos de imagen sino colocamos la de por defecto
-            if(isValid(etUrl.getText().toString())){
-                Glide.with(this).load(aspect.url).into(ivImage);
-            }else{
-              String  url="https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Question_mark.png/380px-Question_mark.png" ;
-                Glide.with(this).load(url).into(ivImage);
+
+            if(isValid(tiUrl.getText().toString())){
+                Glide.with(this).load(tiUrl.getText().toString()).into(ivImage);
+            }else {
+                Glide.with(this).load(getString(R.string.url_default)).into(ivImage);
             }
+
+
+            tiUrl.setOnFocusChangeListener((v, hasFocus) -> {
+                String url;
+
+
+
+                if(!hasFocus) {
+                    if(!tiUrl.getText().toString().isEmpty() && isValid(tiUrl.getText().toString())) {
+
+                        url = tiUrl.getText().toString();
+                        Glide.with(this).load(url).into(ivImage);
+                    }else {
+
+                        Glide.with(this).load(getString(R.string.url_default)).into(ivImage);
+                    }
+
+                }
+
+            });
 
             defineEditListener();
             defineCancelListener();
@@ -93,18 +118,21 @@ public class EditAspect extends AppCompatActivity {
                 case "Legendary":
                     spRarity.setSelection(4);
                     break;
-                case "Global":
+                case "Ancestral":
                     spRarity.setSelection(5);
+                    break;
+                case "Global":
+                    spRarity.setSelection(6);
                     break;
             }
         }
-        //boton de borrar
+        //para el boton  borrar
     private void defineDeleteListener() {
         AspectViewModel avm = new ViewModelProvider(this).get(AspectViewModel.class);
             ibDelete.setOnClickListener(view -> {
                 AlertDialog.Builder builder  = new AlertDialog.Builder(this);
-                builder.setTitle("Delete this Aspect")
-                        .setMessage("You are about to delete this aspect, this action will be irreversible. Are you sure?")
+                builder.setTitle(R.string.title_erase)
+                        .setMessage(R.string.message_erase)
                         .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
@@ -123,6 +151,7 @@ public class EditAspect extends AppCompatActivity {
             });
     }
 
+    //para el boton editar
     private void defineEditListener() {
             AspectViewModel avm = new ViewModelProvider(this).get(AspectViewModel.class);
             WeaponViewModel wvm = new ViewModelProvider(this).get(WeaponViewModel.class);
@@ -143,6 +172,8 @@ public class EditAspect extends AppCompatActivity {
                 if (aspect.isValid()){
                     avm.updateAspect(aspect);
                     finish();
+                }else{
+                    Toast.makeText(this, R.string.incorrect_fields, Toast.LENGTH_LONG).show();
                 }
             });
         }
@@ -165,16 +196,22 @@ public class EditAspect extends AppCompatActivity {
                 finish();
             });
         }
+
+
+
+        //crea el nuevo aspecto con los campos editados
         private Aspect getAspect() {
-            String name = etName.getText().toString().trim();
-            String condition = etCondition.getText().toString().trim();
+            String name = tiName.getText().toString().trim();
+            String condition = tiCondition.getText().toString().trim();
             String rarity = spRarity.getSelectedItem().toString().trim();
-            String url = etUrl.getText().toString().trim();
+            String url = tiUrl.getText().toString().trim();
+            String fecha=tiDate.getText().toString().trim();
             Weapon weapon = (Weapon) spWeapon.getSelectedItem();
             Aspect aspect = new Aspect();
             aspect.name = name;
             aspect.rarity =rarity;
             aspect.condition = condition;
+            aspect.fecha=fecha;
             aspect.url = url;
             aspect.idWeapon = weapon.id;
             aspect.id = this.aspect.id;

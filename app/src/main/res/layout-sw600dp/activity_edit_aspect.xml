@@ -10,17 +10,17 @@
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar"
 
-        android:layout_height="192dp"
-        android:layout_width="match_parent">
+        android:layout_width="match_parent"
+        android:layout_height="300dp">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:toolbarId="@+id/toolbar"
+            app:contentScrim="?attr/colorPrimary"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:layout_scrollInterpolator="@android:anim/decelerate_interpolator"
 
-            app:contentScrim="?attr/colorPrimary">
+            app:toolbarId="@+id/toolbar">
 
             <ImageView
                 android:id="@+id/app_bar_image"
@@ -34,8 +34,8 @@
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
-                android:layout_height="?attr/actionBarSize"
-                android:layout_width="match_parent"></androidx.appcompat.widget.Toolbar>
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"></androidx.appcompat.widget.Toolbar>
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -70,21 +70,23 @@
                 app:layout_constraintTop_toBottomOf="@+id/etCondition"
                 app:layout_constraintVertical_bias="0.328"
                 app:layout_constraintVertical_weight="1"
-                app:startIconDrawable="@drawable/ic_url"
+                app:startIconDrawable="@drawable/ic_baseline_arrow_url_tablet"
                 tools:ignore="TouchTargetSizeCheck">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tiUrl"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:textSize="@dimen/tablet_dimension"
                     tools:ignore="TextContrastCheck" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/etName"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_width="920dp"
+                android:layout_height="134dp"
                 android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="8dp"
                 android:hint="@string/Name"
@@ -98,13 +100,14 @@
                 app:layout_constraintVertical_bias="0.47000003"
                 app:layout_constraintVertical_weight="1"
                 app:passwordToggleEnabled="false"
-                app:startIconDrawable="@drawable/ic_weapon">
+                app:startIconDrawable="@drawable/ic_baseline_weapon_tablet">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tiName"
                     android:layout_width="match_parent"
 
                     android:layout_height="match_parent"
+                    android:textSize="@dimen/tablet_dimension"
                     tools:ignore="TextContrastCheck" />
 
 
@@ -113,13 +116,15 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/etCondition"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_width="925dp"
+                android:layout_height="108dp"
                 android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
+                android:layout_marginBottom="8dp"
+
                 android:ems="10"
                 android:hint="@string/Condition"
-
                 android:inputType="textPersonName"
                 app:layout_constraintBottom_toTopOf="@+id/etUrl"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -127,7 +132,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/spRarity"
                 app:layout_constraintVertical_weight="1"
-                app:startIconDrawable="@drawable/ic_condition"
+                app:startIconDrawable="@drawable/ic_baseline_condition_tablet"
                 tools:ignore="TouchTargetSizeCheck,TextContrastCheck">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -135,6 +140,7 @@
                     android:layout_width="match_parent"
 
                     android:layout_height="match_parent"
+                    android:textSize="@dimen/tablet_dimension"
                     tools:ignore="TextContrastCheck" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -142,7 +148,7 @@
             <Spinner
                 android:id="@+id/spWeapon"
                 android:layout_width="0dp"
-                android:layout_height="50dp"
+                android:layout_height="100dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
                 app:layout_constraintBottom_toTopOf="@+id/etName"
@@ -155,10 +161,11 @@
 
             <ImageView
                 android:id="@+id/ivImage"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_width="939dp"
+                android:layout_height="407dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
+                android:layout_marginBottom="16dp"
                 android:contentDescription="@string/iv_aspect"
                 app:layout_constraintBottom_toTopOf="@+id/spWeapon"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -172,31 +179,34 @@
 
             <Button
                 android:id="@+id/btEdit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="31dp"
-                android:layout_marginBottom="8dp"
-                android:text="@string/bt_edit"
-                app:icon="@drawable/ic_baseline_edit_20"
+                android:layout_width="285dp"
+                android:layout_height="98dp"
+                android:layout_marginEnd="4dp"
+                android:text="@string/bt_add"
+                android:textSize="50sp"
+                app:icon="@drawable/ic_baseline_edit_24"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:ignore="TextContrastCheck" />
 
             <Button
                 android:id="@+id/btCancel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginBottom="8dp"
+                android:layout_width="393dp"
+                android:layout_height="111dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="4dp"
                 android:text="@string/bt_cancel"
-                app:icon="@drawable/ic_baseline_cancel_24"
+                android:textSize="50sp"
+                app:icon="@drawable/ic_baseline_cancel_tablet"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                tools:ignore="TouchTargetSizeCheck" />
 
             <Spinner
                 android:id="@+id/spRarity"
-                style="@style/Widget.AppCompat.Spinner"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
+                style="@style/mySpinnerItemStyle"
+                android:layout_width="927dp"
+                android:layout_height="100dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="8dp"
@@ -215,6 +225,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="16dp"
                 android:ems="10"
@@ -226,7 +237,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/etUrl"
                 app:layout_constraintVertical_weight="1"
                 app:passwordToggleEnabled="false"
-                app:startIconDrawable="@drawable/ic_date"
+                app:startIconDrawable="@drawable/ic_baseline_date_tablet"
                 tools:ignore="TouchTargetSizeCheck">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -236,27 +247,28 @@
                     android:layout_height="wrap_content"
                     android:editable="false"
                     android:hint="@string/Date"
-                    tools:ignore="TextContrastCheck,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+                    android:textSize="@dimen/tablet_dimension"
+                    tools:ignore="TextContrastCheck,SpeakableTextPresentCheck" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <ImageButton
                 android:id="@+id/ibDelete"
-                android:layout_width="90dp"
-                android:layout_height="71dp"
-                android:layout_marginBottom="8dp"
+                android:layout_width="214dp"
+                android:layout_height="140dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
                 android:backgroundTint="@color/principal"
                 android:contentDescription="@string/ib_delete"
                 android:scaleType="centerCrop"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/btEdit"
-                app:layout_constraintHorizontal_bias="0.413"
+                app:layout_constraintHorizontal_bias="0.428"
                 app:layout_constraintStart_toEndOf="@+id/btCancel"
                 app:srcCompat="@drawable/ic_baseline_delete_24"
-                tools:ignore="SpeakableTextPresentCheck" />
+                tools:ignore="SpeakableTextPresentCheck,ImageContrastCheck,TouchTargetSizeCheck" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>
 
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
-

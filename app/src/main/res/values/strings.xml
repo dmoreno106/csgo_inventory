@@ -17,4 +17,15 @@
     <string name="tv_name">Name:</string>
     <string name="bt_edit">EDIT</string>
     <string name="csgo">CSGO INVENTORY</string>
+    <string name="url_default">https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Question_mark.png/380px-Question_mark.png</string>
+    <string name="Date">Adquisition Date</string>
+    <string name="finalProyect">imgDesc</string>
+    <string name="Finish">Finish</string>
+    <string name="message_alert">the aspect was inserted succesfully, do you desire keep adding aspects?</string>
+    <string name="inserted">Aspect inserted</string>
+    <string name="title_alert">¿Keep adding weapons?</string>
+    <string name="already_saved">this aspect is already saved</string>
+    <string name="incorrect_fields">fields are not correct</string>
+    <string name="message_erase">You are about to delete this aspect, this action will be irreversible. Are you sure?</string>
+    <string name="title_erase">Delete this Aspect</string>
 </resources>

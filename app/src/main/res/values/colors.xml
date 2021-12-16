@@ -16,4 +16,7 @@
     <color name="yellow">#CDDC39</color>
     <color name="cyan">#438884</color>
     <color name="darkBlue">#1B0E7A</color>
+    <color name="principal">#D5AA00</color>
+    <color name="secondary">#F4744C</color>
+    <color name="darkgray">#292422</color>
 </resources>

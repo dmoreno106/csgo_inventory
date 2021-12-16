@@ -43,7 +43,7 @@ public class AspectAdapter extends RecyclerView.Adapter<AspectViewHolder> {
         Aspect aspect = weaponAspect.aspect;
         holder.aspect = aspect;
         Weapon weapon = weaponAspect.weapon;
-        holder.tvUrl.setText(aspect.url);
+        holder.tvDate.setText(aspect.fecha);
         holder.tvCondition.setText(aspect.condition);
         holder.tvRarity.setText(aspect.rarity );
         String url = aspect.url;
@@ -68,6 +68,9 @@ public class AspectAdapter extends RecyclerView.Adapter<AspectViewHolder> {
             case "Mythical":
                 holder.ivAspect.setBackground(context.getDrawable(R.drawable.mythical));
                 break;
+            case "Ancestral":
+                holder.ivAspect.setBackground(context.getDrawable(R.drawable.ancestral));
+                break;
             case "Legendary":
                 holder.ivAspect.setBackground(context.getDrawable(R.drawable.legendary));
                 break;
@@ -75,7 +78,7 @@ public class AspectAdapter extends RecyclerView.Adapter<AspectViewHolder> {
                 holder.ivAspect.setBackground(context.getDrawable(R.drawable.global));
                 break;
         }
-        holder.tvWeapon.setText(weapon.name + " (" + weapon.id + ")");
+        holder.tvWeapon.setText(weapon.name);
         holder.tvName.setText(aspect.name);
     }
 

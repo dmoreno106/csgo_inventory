@@ -34,6 +34,9 @@ public class Aspect implements Parcelable {
     @ColumnInfo(name = "rarity")
     public String rarity;
 
+    @ColumnInfo(name = "fecha")
+    public String fecha;
+
     @ColumnInfo(name = "url")
     public String url;
 
@@ -47,6 +50,7 @@ public class Aspect implements Parcelable {
         condition = in.readString();
         rarity = in.readString();
         url = in.readString();
+        fecha=in.readString();
     }
 
     public static final Creator<Aspect> CREATOR = new Creator<Aspect>() {
@@ -62,7 +66,7 @@ public class Aspect implements Parcelable {
     };
 
     public boolean isValid() {
-        return !(name.isEmpty() || rarity.isEmpty() || condition.isEmpty() || url.isEmpty() || idWeapon <= 0);
+        return !(name.isEmpty() || rarity.isEmpty() || condition.isEmpty() || url.isEmpty() || fecha.isEmpty() || idWeapon <= 0);
         //shortcut
     }
 
@@ -79,5 +83,6 @@ public class Aspect implements Parcelable {
         dest.writeString(condition);
         dest.writeString(rarity);
         dest.writeString(url);
+        dest.writeString(fecha);
     }
 }

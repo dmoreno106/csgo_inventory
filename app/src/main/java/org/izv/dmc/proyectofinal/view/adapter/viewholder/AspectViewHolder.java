@@ -1,7 +1,6 @@
 package org.izv.dmc.proyectofinal.view.adapter.viewholder;
 
 import android.content.Intent;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -15,7 +14,7 @@ import org.izv.dmc.proyectofinal.view.activity.EditAspect;
 
 public class AspectViewHolder extends RecyclerView.ViewHolder {
 
-   public TextView tvName, tvWeapon, tvRarity, tvCondition, tvUrl;
+   public TextView tvName, tvWeapon, tvRarity, tvCondition, tvDate;
     public ImageView ivAspect;
     public Aspect aspect;
 
@@ -25,7 +24,7 @@ public class AspectViewHolder extends RecyclerView.ViewHolder {
         tvWeapon = itemView.findViewById(R.id.tvWeapon);
         tvRarity = itemView.findViewById(R.id.tvRarity);
         tvCondition = itemView.findViewById(R.id.tvCondition);
-        tvUrl = itemView.findViewById(R.id.tvUrl);
+        tvDate = itemView.findViewById(R.id.tvDate);
         ivAspect = itemView.findViewById(R.id.ivAspect);
         itemView.setOnClickListener(v -> {
             Intent intent = new Intent(itemView.getContext(), EditAspect.class);
